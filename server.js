@@ -27,20 +27,20 @@ server.on('connection', connection => {
                 connections.set(id, connection);
                 break;
             case 'message':
-                console.log('call message');
                 const receiver = connections.get(data.receiverId);
 
                 if (receiver) {
+                    console.log(`message [${id}] -> [${data.receiverId}]`);
                     receiver.send({
                         name: 'message',
                         data: data.data
                     });
                 } else {
-                    console.log('MESSAGE TO NOTHING');
+                    console.log(`message to nothing [${id}] -> [${data.receiverId}]`);
                 }
                 break;
             default:
-                console.log('Unknown package', data);
+                console.log('unknown package', data);
         }
     });
 });

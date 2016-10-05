@@ -1,8 +1,7 @@
 const Client = require('../../json-protocol/Client');
 
-console.log();
-
 const client = new Client({
+    host: 'localhost',
     port: 8123,
     autoReconnect: true
 });
